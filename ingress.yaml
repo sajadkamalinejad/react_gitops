@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: reactapp-ingressroute
+  namespace: react
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`reactapp.local`)
+    kind: Rule
+    services:
+    - name: reactapp-service
+      port: 80
+
